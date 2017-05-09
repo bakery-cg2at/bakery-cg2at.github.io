@@ -97,7 +97,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#network-backmapping">Network backmapping</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#source-coordinate-and-source-topology"><cite>&lt;source_coordinate&gt;</cite> and <cite>&lt;source_topology&gt;</cite></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#cg-bead"><cite>&lt;cg_bead&gt;</cite></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="xml_structure.html">XML structure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#charge-map"><cite>&lt;charge_map&gt;</cite></a></li>
 </ul>
 </li>
 </ul>
@@ -390,6 +390,26 @@ We can define multiple bead lists that will vary with <strong>degree</strong> an
 that will be use to make a connection at atomistic level.
 The concept of active sites is illustrated below:</p>
 <img alt="_images/ipd_epon_scheme.png" src="_images/ipd_epon_scheme.png" />
+<div class="section" id="charge-map">
+<h4><cite>&lt;charge_map&gt;</cite><a class="headerlink" href="#charge-map" title="Permalink to this headline">¶</a></h4>
+<p>The partial charges for the atoms can be defined in the input topology file or at the level of <code class="code xml docutils literal"><span class="name tag"><span class="pre">&lt;beads&gt;</span></span></code> tag by
+including <code class="code xml docutils literal"><span class="name tag"><span class="pre">&lt;charge_map&gt;&lt;/charge_map&gt;</span></span></code> tag.</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;beads</span> <span class="na">degree=</span><span class="s">&quot;1&quot;</span> <span class="na">molecule_degree=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>
+    1:EPO:C1 1:EPO:O1 1:EPO:C2 1:EPO:H1 1:EPO:H2 1:EPO:H3 1:EPO:C3 1:EPO:O2 1:EPO:H23 1:EPO:H24
+    <span class="nt">&lt;charge_map&gt;</span>
+    0.0 0.0 * * * * * * * *
+    <span class="nt">&lt;/charge_map&gt;</span>
+<span class="nt">&lt;/beads&gt;</span>
+</pre></div>
+</div>
+<p>The number of elements in the charge map has to correspond number of atoms in the fragment.
+We can define explicitly the particla charge for atom or we can declare that the charge for this atom
+will be taken from the topology by using star character <strong>*</strong>.</p>
+<p>The charges per fragment can be equilibrated by definigin the attribute <code class="code xml docutils literal"><span class="pre">equilibrate_charges=&quot;1&quot;</span></code> in <code class="code xml docutils literal"><span class="name tag"><span class="pre">&lt;cg_molecule&gt;</span></span></code> tag:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;cg_molecule</span> <span class="na">equilibrate_charges=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
+  ...
+</pre></div>
+</div>
 <p>The full reference you can find in <span class="xref std std-ref">xml-structure</span></p>
 <div class="toctree-wrapper compound">
 <ul>
@@ -415,6 +435,7 @@ The concept of active sites is illustrated below:</p>
 <tr><td class="label"><a class="fn-backref" href="#id7">[3]</a></td><td><a class="reference external" href="http://www.gromacs.org/Documentation/Manual">http://www.gromacs.org/Documentation/Manual</a></td></tr>
 </tbody>
 </table>
+</div>
 </div>
 </div>
 </div>
