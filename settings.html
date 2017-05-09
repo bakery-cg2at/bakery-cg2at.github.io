@@ -1,0 +1,489 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Configuration file &mdash; Bakery 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Bakery 1.0 documentation" href="index.html"/>
+        <link rel="next" title="XML structure" href="xml_structure.html"/>
+        <link rel="prev" title="Method" href="method.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Bakery
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="method.html">Method</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Configuration file</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#dodecane">Dodecane</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#settings"><cite>&lt;settings&gt;</cite></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cg-molecule"><cite>&lt;cg_molecule&gt;</cite></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cg-configuration"><cite>&lt;cg_configuration&gt;</cite></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hybrid-configuration"><cite>&lt;hybrid_configuration&gt;</cite></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hybrid-topology"><cite>&lt;hybrid_topology&gt;</cite></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#network-backmapping">Network backmapping</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#source-coordinate-and-source-topology"><cite>&lt;source_coordinate&gt;</cite> and <cite>&lt;source_topology&gt;</cite></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cg-bead"><cite>&lt;cg_bead&gt;</cite></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="xml_structure.html">XML structure</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Bakery</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Configuration file</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="configuration-file">
+<h1>Configuration file<a class="headerlink" href="#configuration-file" title="Permalink to this headline">¶</a></h1>
+<p>The description of backmapping configuration is stored in XML file format. The format of file is very similarly
+to what is used by <a class="reference external" href="http://votca.org/">VOTCA</a> <a class="footnote-reference" href="#id1" id="id2">[1]</a>. In next two examples we will explain step-by-step how to create that file.</p>
+<div class="section" id="dodecane">
+<h2>Dodecane<a class="headerlink" href="#dodecane" title="Permalink to this headline">¶</a></h2>
+<p>The original <a class="reference external" href="http://votca.org/">VOTCA</a> <a class="footnote-reference" href="#id1" id="id3">[1]</a> mapping file is shown below. It represents mapping where two united-atoms are replaced by the one coarse-grained bead.</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;cg_molecule&gt;</span>
+<span class="nt">&lt;name&gt;</span>DOD<span class="nt">&lt;/name&gt;</span> <span class="c">&lt;!-- the name of the molecule after mapping --&gt;</span>
+<span class="nt">&lt;ident&gt;</span>DOD<span class="nt">&lt;/ident&gt;</span> <span class="c">&lt;!-- the name of the molecule in atomistic topology --&gt;</span>
+<span class="nt">&lt;topology&gt;</span>
+  <span class="nt">&lt;cg_beads&gt;</span>
+    <span class="nt">&lt;cg_bead&gt;</span>
+      <span class="nt">&lt;name&gt;</span>A1<span class="nt">&lt;/name&gt;</span>
+      <span class="nt">&lt;type&gt;</span>A<span class="nt">&lt;/type&gt;</span>
+      <span class="nt">&lt;mapping&gt;</span>A<span class="nt">&lt;/mapping&gt;</span>
+      <span class="nt">&lt;beads&gt;</span>
+        1:DOD:C1 1:DOD:C2
+      <span class="nt">&lt;/beads&gt;</span>
+    <span class="nt">&lt;/cg_bead&gt;</span>
+    <span class="nt">&lt;cg_bead&gt;</span>
+      <span class="nt">&lt;name&gt;</span>B1<span class="nt">&lt;/name&gt;</span>
+      <span class="nt">&lt;type&gt;</span>B<span class="nt">&lt;/type&gt;</span>
+      <span class="nt">&lt;mapping&gt;</span>B<span class="nt">&lt;/mapping&gt;</span>
+      <span class="nt">&lt;beads&gt;</span>
+        1:DOD:C3 1:DOD:C4
+      <span class="nt">&lt;/beads&gt;</span>
+    <span class="nt">&lt;/cg_bead&gt;</span>
+    <span class="nt">&lt;cg_bead&gt;</span>
+      <span class="nt">&lt;name&gt;</span>B2<span class="nt">&lt;/name&gt;</span>
+      <span class="nt">&lt;type&gt;</span>B<span class="nt">&lt;/type&gt;</span>
+      <span class="nt">&lt;mapping&gt;</span>B<span class="nt">&lt;/mapping&gt;</span>
+      <span class="nt">&lt;beads&gt;</span>
+        1:DOD:C5 1:DOD:C6
+      <span class="nt">&lt;/beads&gt;</span>
+    <span class="nt">&lt;/cg_bead&gt;</span>
+    <span class="nt">&lt;cg_bead&gt;</span>
+      <span class="nt">&lt;name&gt;</span>B3<span class="nt">&lt;/name&gt;</span>
+      <span class="nt">&lt;type&gt;</span>B<span class="nt">&lt;/type&gt;</span>
+      <span class="nt">&lt;mapping&gt;</span>B<span class="nt">&lt;/mapping&gt;</span>
+      <span class="nt">&lt;beads&gt;</span>
+        1:DOD:C7 1:DOD:C8
+      <span class="nt">&lt;/beads&gt;</span>
+    <span class="nt">&lt;/cg_bead&gt;</span>
+    <span class="nt">&lt;cg_bead&gt;</span>
+      <span class="nt">&lt;name&gt;</span>B4<span class="nt">&lt;/name&gt;</span>
+      <span class="nt">&lt;type&gt;</span>B<span class="nt">&lt;/type&gt;</span>
+      <span class="nt">&lt;mapping&gt;</span>B<span class="nt">&lt;/mapping&gt;</span>
+      <span class="nt">&lt;beads&gt;</span>
+        1:DOD:C9 1:DOD:C10
+      <span class="nt">&lt;/beads&gt;</span>
+    <span class="nt">&lt;/cg_bead&gt;</span>
+    <span class="nt">&lt;cg_bead&gt;</span>
+      <span class="nt">&lt;name&gt;</span>A2<span class="nt">&lt;/name&gt;</span>
+      <span class="nt">&lt;type&gt;</span>A<span class="nt">&lt;/type&gt;</span>
+      <span class="nt">&lt;mapping&gt;</span>A<span class="nt">&lt;/mapping&gt;</span>
+      <span class="nt">&lt;beads&gt;</span>
+        1:DOD:C11 1:DOD:C12
+      <span class="nt">&lt;/beads&gt;</span>
+    <span class="nt">&lt;/cg_bead&gt;</span>
+  <span class="nt">&lt;/cg_beads&gt;</span>
+  <span class="nt">&lt;cg_bonded&gt;</span>
+    <span class="nt">&lt;bond&gt;</span>
+      <span class="nt">&lt;name&gt;</span>bond<span class="nt">&lt;/name&gt;</span>
+      <span class="nt">&lt;beads&gt;</span>
+        A1 B1
+        A2 B4
+        B1 B2
+        B2 B3
+        B3 B4
+      <span class="nt">&lt;/beads&gt;</span>
+    <span class="nt">&lt;/bond&gt;</span>
+    <span class="nt">&lt;angle&gt;</span>
+      <span class="nt">&lt;name&gt;</span>angle_ch3<span class="nt">&lt;/name&gt;</span>
+      <span class="nt">&lt;beads&gt;</span>
+        A1 B1 B2
+        B3 B4 A2
+      <span class="nt">&lt;/beads&gt;</span>
+    <span class="nt">&lt;/angle&gt;</span>
+    <span class="nt">&lt;angle&gt;</span>
+      <span class="nt">&lt;name&gt;</span>angle_ch2<span class="nt">&lt;/name&gt;</span>
+      <span class="nt">&lt;beads&gt;</span>
+        B1 B2 B3
+        B2 B3 B4
+      <span class="nt">&lt;/beads&gt;</span>
+    <span class="nt">&lt;/angle&gt;</span>
+    <span class="nt">&lt;dihedral&gt;</span>
+      <span class="nt">&lt;name&gt;</span>dihedral<span class="nt">&lt;/name&gt;</span>
+      <span class="nt">&lt;beads&gt;</span>
+        A1 B1 B2 B3
+        B1 B2 B3 B4
+        B2 B3 B4 A2
+      <span class="nt">&lt;/beads&gt;</span>
+    <span class="nt">&lt;/dihedral&gt;</span>
+  <span class="nt">&lt;/cg_bonded&gt;</span>
+<span class="nt">&lt;/topology&gt;</span>
+<span class="nt">&lt;maps&gt;</span>
+  <span class="nt">&lt;map&gt;</span>
+    <span class="nt">&lt;name&gt;</span>A<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;weights&gt;</span>15.035 14.027<span class="nt">&lt;/weights&gt;</span>
+  <span class="nt">&lt;/map&gt;</span>
+  <span class="nt">&lt;map&gt;</span>
+    <span class="nt">&lt;name&gt;</span>B<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;weights&gt;</span>14.027 14.027<span class="nt">&lt;/weights&gt;</span>
+  <span class="nt">&lt;/map&gt;</span>
+<span class="nt">&lt;/maps&gt;</span>
+<span class="nt">&lt;/cg_molecule&gt;</span>
+</pre></div>
+</div>
+<div class="section" id="settings">
+<h3><cite>&lt;settings&gt;</cite><a class="headerlink" href="#settings" title="Permalink to this headline">¶</a></h3>
+<p>First we have to surround whole file with <code class="code xml docutils literal"><span class="name tag"><span class="pre">&lt;settings&gt;</span></span></code> tag:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;settings&gt;</span>
+  <span class="nt">&lt;cg_molecule&gt;</span>
+  ...
+  <span class="nt">&lt;/cg_molecule&gt;</span>
+<span class="nt">&lt;/settings&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cg-molecule">
+<h3><cite>&lt;cg_molecule&gt;</cite><a class="headerlink" href="#cg-molecule" title="Permalink to this headline">¶</a></h3>
+<p>Next, we have to set up source coordinate file for each of molecule. We add tag <code class="code xml docutils literal"><span class="name tag"><span class="pre">&lt;source_file&gt;</span></span></code> and <code class="code xml docutils literal"><span class="name tag"><span class="pre">&lt;source_topology&gt;</span></span></code>
+which defines topology of atomistic fragment.</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;cg_molecule&gt;</span>
+  ...
+  <span class="nt">&lt;source_coordinate&gt;&lt;file&gt;</span>dodecane_single.gro<span class="nt">&lt;/file&gt;&lt;/file&gt;&lt;/source_coordinate&gt;</span>
+  <span class="nt">&lt;source_topology&gt;&lt;file&gt;</span>topol.top<span class="nt">&lt;/file&gt;&lt;/source_topology&gt;</span>
+  ...
+<span class="nt">&lt;/cg_molecule&gt;</span>
+</pre></div>
+</div>
+<p>There could be multiple <code class="code xml docutils literal"><span class="name tag"><span class="pre">&lt;cg_molecule&gt;</span></span></code> sections that will describe different types of atomistic molecule.</p>
+</div>
+<div class="section" id="cg-configuration">
+<h3><cite>&lt;cg_configuration&gt;</cite><a class="headerlink" href="#cg-configuration" title="Permalink to this headline">¶</a></h3>
+<p>After the list of CG molecules, we have to define
+input format and a name of file of CG coordinate file that is reverse mapped.</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;cg_molecule&gt;</span>
+...
+<span class="nt">&lt;/cg_molecule&gt;</span>
+
+<span class="nt">&lt;cg_configuration&gt;</span>
+  <span class="nt">&lt;coordinate&gt;</span>cg_conf.gro<span class="nt">&lt;/coordinate&gt;</span>
+  <span class="nt">&lt;topology&gt;</span>cg_topol.top<span class="nt">&lt;/topology&gt;</span>
+<span class="nt">&lt;/cg_configuration&gt;</span>
+...
+</pre></div>
+</div>
+</div>
+<div class="section" id="hybrid-configuration">
+<h3><cite>&lt;hybrid_configuration&gt;</cite><a class="headerlink" href="#hybrid-configuration" title="Permalink to this headline">¶</a></h3>
+<p>This section describes output hybrid coordinate file. Currently we support only GROMACS output file.</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;hybrid_configuration&gt;</span>
+  <span class="nt">&lt;file&gt;</span>hyb_conf.gro<span class="nt">&lt;/file&gt;</span>
+<span class="nt">&lt;/hybrid_configuration&gt;</span>
+</pre></div>
+</div>
+<p>In this block above we define that the output hybrid coordinate file will be stored in <cite>hyb_conf.gro</cite>.</p>
+</div>
+<div class="section" id="hybrid-topology">
+<h3><cite>&lt;hybrid_topology&gt;</cite><a class="headerlink" href="#hybrid-topology" title="Permalink to this headline">¶</a></h3>
+<p>The options for output hybrid topology file are defined in tag <code class="code xml docutils literal"><span class="name tag"><span class="pre">&lt;hybrid_topology&gt;</span></span></code>. Very simple example is shown below.</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;hybrid_topology&gt;</span>
+  <span class="nt">&lt;file&gt;</span>hyb_topol.top<span class="nt">&lt;/file&gt;</span>
+  <span class="nt">&lt;include&gt;</span>
+    #include &quot;/usr/share/gromacs/top/oplsaa.ff/forcefield.itp&quot;
+  <span class="nt">&lt;/include&gt;</span>
+  <span class="nt">&lt;molecule_type&gt;</span>
+      <span class="nt">&lt;name&gt;</span>PE<span class="nt">&lt;/name&gt;</span>
+      <span class="nt">&lt;exclusion&gt;</span>3<span class="nt">&lt;/exclusion&gt;</span>
+  <span class="nt">&lt;/molecule_type&gt;</span>
+  <span class="nt">&lt;system&gt;</span>PE<span class="nt">&lt;/system&gt;</span>
+<span class="nt">&lt;/hybrid_topology&gt;</span>
+</pre></div>
+</div>
+<p>Here we define that output file is <cite>hyb_topol.top</cite>. We define include section in <code class="code xml docutils literal"><span class="name tag"><span class="pre">&lt;include&gt;&lt;/include&gt;</span></span></code>. <code class="code xml docutils literal"><span class="name tag"><span class="pre">&lt;molecule_type&gt;</span></span></code> tag defines the name of molecule in <cite>&lt;name&gt;</cite> tag and the exclusion rule. In this case, every particle that is separated by 1, 2, 3 bonds will be excluded from non-bonded interactions. This follows the <a class="reference external" href="http://www.gromacs.org/">GROMACS</a> <a class="footnote-reference" href="#id4" id="id5">[2]</a> rules (see <a class="reference external" href="http://www.gromacs.org/Documentation/Manual">GROMACS manual</a> <a class="footnote-reference" href="#id6" id="id7">[3]</a> for further information).</p>
+</div>
+</div>
+<div class="section" id="network-backmapping">
+<h2>Network backmapping<a class="headerlink" href="#network-backmapping" title="Permalink to this headline">¶</a></h2>
+<p>This example is based on backampping of epoxy-like network, built with two components:
+bisphenol A diglycidyl ether and isophrone diamine.
+Full settings can be found in <a class="reference download internal" href="_downloads/settings_rim135.xml" download=""><code class="xref download docutils literal"><span class="pre">settings_network.xml</span></code></a>.
+Here we only denote important sections.</p>
+<div class="section" id="source-coordinate-and-source-topology">
+<h3><cite>&lt;source_coordinate&gt;</cite> and <cite>&lt;source_topology&gt;</cite><a class="headerlink" href="#source-coordinate-and-source-topology" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;source_coordinate&gt;</span>
+    <span class="nt">&lt;file</span> <span class="na">molecule_degree=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>epon-828.gro<span class="nt">&lt;/file&gt;</span>
+    <span class="nt">&lt;file</span> <span class="na">molecule_degree=</span><span class="s">&quot;1&quot;</span> <span class="na">when=</span><span class="s">&quot;A1&quot;</span><span class="nt">&gt;</span>epon-828_deg1_A1.gro<span class="nt">&lt;/file&gt;</span>
+    <span class="nt">&lt;file</span> <span class="na">molecule_degree=</span><span class="s">&quot;1&quot;</span> <span class="na">when=</span><span class="s">&quot;A2&quot;</span><span class="nt">&gt;</span>epon-828_deg1_A2.gro<span class="nt">&lt;/file&gt;</span>
+    <span class="nt">&lt;file</span> <span class="na">molecule_degree=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>epon-828_deg2.gro<span class="nt">&lt;/file&gt;</span>
+<span class="nt">&lt;/source_coordinate&gt;</span>
+</pre></div>
+</div>
+<p><cite>source_coordinate</cite> and <cite>source_topology</cite> defines the atomistic fragments to use.
+The appropriate file is selected depends on the molecule degree and the connected coarse-grained
+bead.
+In this case, the epoxied molecule is coarse-grained into three beads <cite>A1-B1-A2</cite>.
+During the chemical reaction, either <cite>A1</cite> or <cite>A2</cite> can be linked to other molecules and base on this
+the appropriate fragment will be selected.
+The same structure is in the case of <cite>source_topology</cite>.</p>
+</div>
+<div class="section" id="cg-bead">
+<h3><cite>&lt;cg_bead&gt;</cite><a class="headerlink" href="#cg-bead" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;cg_bead&gt;</span>
+    <span class="nt">&lt;name&gt;</span>A1<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;type&gt;</span>A<span class="nt">&lt;/type&gt;</span>
+    <span class="nt">&lt;beads</span> <span class="na">degree=</span><span class="s">&quot;1&quot;</span> <span class="na">molecule_degree=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>
+        1:EPO:C1 1:EPO:O1 1:EPO:C2 1:EPO:H1 1:EPO:H2 1:EPO:H3 1:EPO:C3 1:EPO:O2 1:EPO:H23 1:EPO:H24
+    <span class="nt">&lt;/beads&gt;</span>
+    <span class="nt">&lt;beads</span> <span class="na">degree=</span><span class="s">&quot;2&quot;</span> <span class="na">active_site=</span><span class="s">&quot;EPO:C1:4&quot;</span> <span class="na">molecule_degree=</span><span class="s">&quot;1,2&quot;</span><span class="nt">&gt;</span>
+        1:EPO:C1 1:EPO:O1 1:EPO:C2 1:EPO:H1 1:EPO:H2 1:EPO:H3 1:EPO:C3 1:EPO:O2 1:EPO:H23 1:EPO:H24
+        1:EPO:H25
+    <span class="nt">&lt;/beads&gt;</span>
+<span class="nt">&lt;/cg_bead&gt;</span>
+</pre></div>
+</div>
+<p>Here we put the list of atoms that will be taken from the fragment (with bonds, angles, dihedrals).
+We can define multiple bead lists that will vary with <strong>degree</strong> and <strong>molecule_degree</strong>.</p>
+<p>If the bead at CG level is reactive then we have to define an <strong>active_site</strong>, the atoms from the bead
+that will be use to make a connection at atomistic level.
+The concept of active sites is illustrated below:</p>
+<img alt="_images/ipd_epon_scheme.png" src="_images/ipd_epon_scheme.png" />
+<p>The full reference you can find in <span class="xref std std-ref">xml-structure</span></p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="xml_structure.html">XML structure</a></li>
+</ul>
+</div>
+<p><strong>References</strong></p>
+<table class="docutils footnote" frame="void" id="id1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> <a class="reference external" href="http://votca.org/">http://votca.org/</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5">[2]</a></td><td><a class="reference external" href="http://www.gromacs.org/">http://www.gromacs.org/</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id7">[3]</a></td><td><a class="reference external" href="http://www.gromacs.org/Documentation/Manual">http://www.gromacs.org/Documentation/Manual</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="xml_structure.html" class="btn btn-neutral float-right" title="XML structure" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="method.html" class="btn btn-neutral" title="Method" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, Jakub Krajniak.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+   
+
+</body>
+</html>
