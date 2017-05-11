@@ -91,7 +91,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="settings.html#network-backmapping">Network backmapping</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="settings.html#source-coordinate-and-source-topology"><cite>&lt;source_coordinate&gt;</cite> and <cite>&lt;source_topology&gt;</cite></a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="settings.html#cg-bead"><cite>&lt;cg_bead&gt;</cite></a><ul class="current">
-<li class="toctree-l4 current"><a class="current reference internal" href="#">XML structure</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="settings.html#charge-map"><cite>&lt;charge_map&gt;</cite></a></li>
 </ul>
 </li>
 </ul>
@@ -170,7 +170,16 @@ The notation <em>1</em> or <em>1..N</em> express the number of elements in the t
 <dt>settings</dt>
 <dd><em>1</em>, root</dd>
 <dt>cg_molecule</dt>
-<dd><em>1..N</em>, different types of atomistic molecules</dd>
+<dd><p class="first"><em>1..N</em>, different types of atomistic molecules
+defines the list of fragments in given CG molecule.</p>
+<dl class="last docutils">
+<dt><strong>attributes</strong></dt>
+<dd><ul class="first last simple">
+<li>equilibrate_charges: if set to &#8220;1&#8221; then the partial charges will be adjusted to make the fragment neutral.</li>
+</ul>
+</dd>
+</dl>
+</dd>
 <dt>cg_molecule.name</dt>
 <dd>coarse-grained name of the molecule</dd>
 <dt>cg_molecule.ident</dt>
@@ -213,6 +222,10 @@ The notation <em>1</em> or <em>1..N</em> express the number of elements in the t
 </dd>
 </dl>
 </dd>
+<dt>cg_bead.beads.charge_map</dt>
+<dd>the list of partial charges that will be assigned to the atoms.
+e.g. 0.0 0.0 * * 1.0; by using <a href="#id1"><span class="problematic" id="id2">**</span></a>* user can declare that the partial charge for that atom
+will be taken from topology file.</dd>
 <dt>cg_configuration</dt>
 <dd><em>1</em>, definition of the CG configuration</dd>
 <dt>cg_configuration.coordinate</dt>
