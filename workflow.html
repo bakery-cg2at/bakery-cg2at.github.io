@@ -142,10 +142,14 @@ The files are available in <cite>example/dodecane</cite> directory that is attac
 <p>In the end we will get two files:</p>
 <blockquote>
 <div><ul class="simple">
-<li><code class="docutils literal"><span class="pre">sim0confout_final_aa_0.0001_12345.gro</span></code></li>
-<li><code class="docutils literal"><span class="pre">sim0topol_aa_0.0001_12345.top`</span></code>.</li>
+<li>atomistic coordinate file: <code class="docutils literal"><span class="pre">sim0confout_final_aa_0.0001_12345.gro</span></code></li>
+<li>atomistic topology file: <code class="docutils literal"><span class="pre">sim0topol_aa_0.0001_12345.top`</span></code>.</li>
 </ul>
 </div></blockquote>
+<p>If the atomistic topology file still containst CG information, you can clean it by the tool <cite>reorder_topology</cite> from <a class="reference external" href="https://github.com/md-lab-tools/lab-tools">LabTools</a></p>
+<p>Example of usage:
+<code class="docutils literal"><span class="pre">reorder_topology</span> <span class="pre">--coord</span> <span class="pre">sim0confout_final_aa_0.0001_12345.gro</span> <span class="pre">--in_top</span> <span class="pre">../hyb_topol.top</span> <span class="pre">--out_top</span> <span class="pre">aa_topol.top</span> <span class="pre">--clean</span> <span class="pre">--remove_cross</span></code></p>
+<p>which will produce <cite>aa_topol.top</cite> file.</p>
 </div>
 
 
