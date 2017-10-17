@@ -133,7 +133,7 @@
             
   <div class="section" id="xml-settings-file">
 <h1>XML settings file<a class="headerlink" href="#xml-settings-file" title="Permalink to this headline">¶</a></h1>
-<p>Here we describe structure of XML settings file. Every <strong>dot</strong> describes the tree structure, e.g. <strong>root.a</strong> represents <code class="code xml docutils literal"><span class="name tag"><span class="pre">&lt;root&gt;&lt;a&gt;&lt;/a&gt;&lt;/root&gt;</span></span></code>.
+<p>Here we describe structure of XML settings file. Every <strong>dot</strong> describes the tree structure, e.g. <strong>root.a</strong> represents <a href="#id1"><span class="problematic" id="id2">:xml:`&lt;root&gt;&lt;a&gt;&lt;/a&gt;&lt;/root&gt;`</span></a>.
 The notation <em>1</em> or <em>1..N</em> express the number of elements in the tree.</p>
 <dl class="docutils">
 <dt>settings</dt>
@@ -143,38 +143,62 @@ The notation <em>1</em> or <em>1..N</em> express the number of elements in the t
 defines the list of fragments in given CG molecule.</p>
 <dl class="last docutils">
 <dt><strong>attributes</strong></dt>
-<dd><ul class="first last simple">
+<dd><blockquote class="first">
+<div><ul class="simple">
 <li>equilibrate_charges: if set to “1” then the partial charges will be adjusted to make the fragment neutral.</li>
 </ul>
-</dd>
-</dl>
-</dd>
+</div></blockquote>
+<dl class="last docutils">
 <dt>cg_molecule.name</dt>
-<dd>coarse-grained name of the molecule</dd>
+<dd>coarse-grained name of the residue</dd>
 <dt>cg_molecule.ident</dt>
-<dd>name of the molecule after backmapping</dd>
+<dd>name of the residue after backmapping</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt>cg_molecule.source_coordinate</dt>
+<dd><p class="first">name of the coordinate file if there is no need to define it per molecule degree.</p>
+<blockquote class="last">
+<div><dl class="docutils">
 <dt>cg_molecule.source_coordinate.file</dt>
-<dd><p class="first">name of coordinate file that stores atomistic fragments which represents molecule</p>
+<dd><p class="first">name of the coordinate file that stores atomistic fragment</p>
 <dl class="last docutils">
 <dt><strong>attributes</strong></dt>
 <dd><ul class="first last simple">
 <li>molecule_degree: declares that given coordinate file will be used when the molecule is in <em>degree</em></li>
 </ul>
 </dd>
+<dt><strong>remark</strong></dt>
+<dd>For every <em>molecule_degree</em> a separate coordinate file can be defined</dd>
 </dl>
 </dd>
+</dl>
+</div></blockquote>
+</dd>
+<dt>cg_molecule.source_topology</dt>
+<dd><p class="first">name of the topology file if there is no need to define it per molecule degree.</p>
+<blockquote class="last">
+<div><dl class="docutils">
 <dt>cg_molecule.source_topology.file</dt>
-<dd><p class="first">name of topology file (GROMACS format) that describes molecule</p>
+<dd><p class="first">name of topology file (GROMACS format) that stores atomistic fragment</p>
 <dl class="last docutils">
 <dt><strong>attributes</strong></dt>
 <dd><ul class="first last simple">
 <li>molecule_degree: declares that given coordinate file will be used when the molecule is in <em>degree</em></li>
 </ul>
 </dd>
+<dt><strong>remark</strong></dt>
+<dd>For every <em>molecule_degree</em> a separate topology file can be defined</dd>
 </dl>
+</dd>
+</dl>
+</div></blockquote>
 </dd>
 <dt>cg_molecule.cg_bead</dt>
-<dd><em>1..N</em>, definition of coarse-grained bead</dd>
+<dd><p class="first"><em>1..N</em>, definition of coarse-grained beads</p>
+<blockquote class="last">
+<div><dl class="docutils">
 <dt>cg_bead.name</dt>
 <dd>the name of CG bead</dd>
 <dt>cg_bead.type</dt>
@@ -186,15 +210,34 @@ defines the list of fragments in given CG molecule.</p>
 <dd><ul class="first last simple">
 <li>degree: the degree of particular CG bead</li>
 <li>molecule_degree: the degree of the whole CG molecule</li>
-<li>active_site: the atom that be used to create atomistic bond (format: <cite>&lt;chain_name&gt;:&lt;atom_name&gt;</cite></li>
+<li>active_site: the atom that be used to create atomistic bond (format: <cite>&lt;chain_name&gt;:&lt;atom_name&gt;:&lt;max_bonds&gt;</cite></li>
 </ul>
 </dd>
+<dt><strong>remark</strong></dt>
+<dd><em>max_bonds</em> in <em>active_site</em> definition defines the maximum number of bonds that given active site can have.
+This take into account existing atomistic bonds. Keep in mind that the package does not know anything about
+double bonds. Therefore, if your active site is already connected withing the fragment with other atoms
+by double bonds, you should reduce the maximum number of bonds. For instance, if your carbon has already double bond
+with other atom, then <em>max_bonds</em> will be 3 instead of 4.</dd>
 </dl>
 </dd>
 <dt>cg_bead.beads.charge_map</dt>
 <dd>the list of partial charges that will be assigned to the atoms.
-e.g. 0.0 0.0 * * 1.0; by using <a href="#id1"><span class="problematic" id="id2">**</span></a>* user can declare that the partial charge for that atom
+e.g. 0.0 0.0 * * 1.0; by using <a href="#id3"><span class="problematic" id="id4">**</span></a>* user can declare that the partial charge for that atom
 will be taken from topology file.</dd>
+<dt>cg_bead.beads.remove</dt>
+<dd><p class="first">the list of atoms to remove whenever a given active site is used.</p>
+<dl class="last docutils">
+<dt><strong>attributes</strong></dt>
+<dd><ul class="first last simple">
+<li>active_site: the name of active site, it should be the same as defined in <em>active_site</em> attribute of <em>cg_beads.beads</em></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+</dd>
 <dt>cg_configuration</dt>
 <dd><em>1</em>, definition of the CG configuration</dd>
 <dt>cg_configuration.coordinate</dt>
@@ -203,9 +246,13 @@ will be taken from topology file.</dd>
 <dd>the name of input file with the coarse-grained coordinate file</dd>
 <dt>hybrid_configuration.file</dt>
 <dd>the output hybrid coordinate file</dd>
+<dt>hybrid_configuration.format</dt>
+<dd>the output of hybrid coordinate file, currently only GROMACS is supported (.gro file)</dd>
 <dt>hybrid_topology</dt>
-<dd><em>1</em>, the definition of output hybrid topology. The format is similar to the one
-used by GROMACS</dd>
+<dd><p class="first"><em>1</em>, the definition of output hybrid topology. The format is similar to the one
+used by GROMACS</p>
+<blockquote class="last">
+<div><dl class="docutils">
 <dt>hybrid_topology.file</dt>
 <dd>the name of output file</dd>
 <dt>hybrid_topology.(bonds|angles|dihedrals)</dt>
@@ -215,18 +262,34 @@ The content contains a list fo pairs in the format &lt;molecule name&gt;:&lt;ato
 <dt><strong>attributes</strong></dt>
 <dd><ul class="first last simple">
 <li>params: parameters of the bonds</li>
+<li>typeid: optional parameter with the numeric label of the bond, useful for converting output topology file to LAMMPS format.</li>
 </ul>
 </dd>
+<dt><strong>remark</strong></dt>
+<dd>the parameters in <em>params</em> are directly injected into output topology file. Therefore you can put comments
+after <em>;</em> character as in the normal GROMACS topology file.</dd>
 </dl>
 </dd>
 <dt>hybrid_topology.include</dt>
-<dd>the include section of hybrid top  (do not add #include part)</dd>
+<dd>the include section of hybrid top  (do not add #include part) Put every entry in the new line.</dd>
 <dt>hybrid_topology.molecule_type</dt>
-<dd><em>1</em>, the molecule_type section</dd>
+<dd><p class="first"><em>1</em>, the molecule_type section</p>
+<blockquote class="last">
+<div><dl class="docutils">
 <dt>hybrid_topologoy.molecule_type.name</dt>
 <dd>the name of molecule</dd>
 <dt>hybrid_topology.molecule_type.exclusion</dt>
-<dd>the exclusion</dd>
+<dd>the global exclusion value, based on this the exclusion for non-bonded interactions will be calculated.</dd>
+<dt>hybrid_topology.molecule_type.exclusion_cg</dt>
+<dd>the exclusion only for CG particles, this value will be used to generate exclusion list only for CG particles</dd>
+<dt>hybrid_topology.molecule_type.exclusion_at</dt>
+<dd>the exclusion only for atomistic particles, this value will be used to generate exclusion list only for atomistic particles</dd>
+</dl>
+</div></blockquote>
+</dd>
+</dl>
+</div></blockquote>
+</dd>
 <dt>hybrid_topology.system</dt>
 <dd>the name of system</dd>
 </dl>
