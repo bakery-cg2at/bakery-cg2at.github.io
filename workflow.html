@@ -161,29 +161,29 @@ The files are available in <cite>example/dodecane</cite> directory that is attac
 <p><strong>Input files</strong></p>
 <blockquote>
 <div><ul class="simple">
-<li><code class="docutils literal"><span class="pre">cg_conf.gro</span></code>: input CG coordinate file</li>
-<li><code class="docutils literal"><span class="pre">dodecane_settings.xml</span></code>: input XML settings file</li>
-<li><code class="docutils literal"><span class="pre">dodecane_single.gro</span></code>: input atomistic coordinate file</li>
+<li><code class="docutils literal notranslate"><span class="pre">cg_conf.gro</span></code>: input CG coordinate file</li>
+<li><code class="docutils literal notranslate"><span class="pre">dodecane_settings.xml</span></code>: input XML settings file</li>
+<li><code class="docutils literal notranslate"><span class="pre">dodecane_single.gro</span></code>: input atomistic coordinate file</li>
 </ul>
 </div></blockquote>
 <p><strong>Steps</strong></p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><code class="docutils literal"><span class="pre">cd</span> <span class="pre">example/dodecane</span></code></li>
-<li><code class="docutils literal"><span class="pre">../../src/prepare_files.py</span> <span class="pre">--options</span> <span class="pre">dodecane_settings.xml</span></code> - prepare hybrid configuration files</li>
-<li><code class="docutils literal"><span class="pre">../../src/start_backmapping.py</span> <span class="pre">--conf</span> <span class="pre">hyb_conf.gro</span> <span class="pre">--topology</span> <span class="pre">hyb_topology.top</span> <span class="pre">--alpha</span> <span class="pre">0.00001</span> <span class="pre">--exclusion_list</span> <span class="pre">exclusion_hyb_topol.list</span></code> - run reverse mapping procedure</li>
+<li><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">example/dodecane</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">../../src/prepare_files.py</span> <span class="pre">--options</span> <span class="pre">dodecane_settings.xml</span></code> - prepare hybrid configuration files</li>
+<li><code class="docutils literal notranslate"><span class="pre">../../src/start_backmapping.py</span> <span class="pre">--conf</span> <span class="pre">hyb_conf.gro</span> <span class="pre">--topology</span> <span class="pre">hyb_topology.top</span> <span class="pre">--alpha</span> <span class="pre">0.00001</span> <span class="pre">--exclusion_list</span> <span class="pre">exclusion_hyb_topol.list</span></code> - run reverse mapping procedure</li>
 </ol>
 </div></blockquote>
 <p>In the end we will get two files:</p>
 <blockquote>
 <div><ul class="simple">
-<li>atomistic coordinate file: <code class="docutils literal"><span class="pre">sim0confout_final_aa_0.0001_12345.gro</span></code></li>
-<li>atomistic topology file: <code class="docutils literal"><span class="pre">sim0topol_aa_0.0001_12345.top`</span></code>.</li>
+<li>atomistic coordinate file: <code class="docutils literal notranslate"><span class="pre">sim0confout_final_aa_0.0001_12345.gro</span></code></li>
+<li>atomistic topology file: <code class="docutils literal notranslate"><span class="pre">sim0topol_aa_0.0001_12345.top`</span></code>.</li>
 </ul>
 </div></blockquote>
 <p>If the atomistic topology file still containst CG information, you can clean it by the tool <cite>reorder_topology</cite> from <a class="reference external" href="https://github.com/md-lab-tools/lab-tools">LabTools</a></p>
 <p>Example of usage:
-<code class="docutils literal"><span class="pre">reorder_topology</span> <span class="pre">--coord</span> <span class="pre">sim0confout_final_aa_0.0001_12345.gro</span> <span class="pre">--in_top</span> <span class="pre">../hyb_topol.top</span> <span class="pre">--out_top</span> <span class="pre">aa_topol.top</span> <span class="pre">--clean</span> <span class="pre">--remove_cross</span></code></p>
+<code class="docutils literal notranslate"><span class="pre">reorder_topology</span> <span class="pre">--coord</span> <span class="pre">sim0confout_final_aa_0.0001_12345.gro</span> <span class="pre">--in_top</span> <span class="pre">../hyb_topol.top</span> <span class="pre">--out_top</span> <span class="pre">aa_topol.top</span> <span class="pre">--clean</span> <span class="pre">--remove_cross</span></code></p>
 <p>which will produce <cite>aa_topol.top</cite> file.</p>
 </div>
 

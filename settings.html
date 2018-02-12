@@ -186,7 +186,7 @@ to what is used by <a class="reference external" href="http://votca.org/">VOTCA<
 <div class="section" id="dodecane">
 <h2>Dodecane<a class="headerlink" href="#dodecane" title="Permalink to this headline">¶</a></h2>
 <p>The original <a class="reference external" href="http://votca.org/">VOTCA</a> <a class="footnote-reference" href="#id1" id="id3">[1]</a> mapping file is shown below. It represents mapping where two united-atoms are replaced by the one coarse-grained bead.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;cg_molecule&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;cg_molecule&gt;</span>
 <span class="nt">&lt;name&gt;</span>DOD<span class="nt">&lt;/name&gt;</span> <span class="c">&lt;!-- the name of the molecule after mapping --&gt;</span>
 <span class="nt">&lt;ident&gt;</span>DOD<span class="nt">&lt;/ident&gt;</span> <span class="c">&lt;!-- the name of the molecule in atomistic topology --&gt;</span>
 <span class="nt">&lt;topology&gt;</span>
@@ -290,8 +290,8 @@ to what is used by <a class="reference external" href="http://votca.org/">VOTCA<
 </div>
 <div class="section" id="settings">
 <h3><cite>&lt;settings&gt;</cite><a class="headerlink" href="#settings" title="Permalink to this headline">¶</a></h3>
-<p>First we have to surround whole file with <code class="code xml docutils literal"><span class="name tag"><span class="pre">&lt;settings&gt;</span></span></code> tag:</p>
-<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;settings&gt;</span>
+<p>First we have to surround whole file with <code class="code xml docutils literal notranslate"><span class="name tag"><span class="pre">&lt;settings&gt;</span></span></code> tag:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;settings&gt;</span>
   <span class="nt">&lt;cg_molecule&gt;</span>
   ...
   <span class="nt">&lt;/cg_molecule&gt;</span>
@@ -301,9 +301,9 @@ to what is used by <a class="reference external" href="http://votca.org/">VOTCA<
 </div>
 <div class="section" id="cg-molecule">
 <h3><cite>&lt;cg_molecule&gt;</cite><a class="headerlink" href="#cg-molecule" title="Permalink to this headline">¶</a></h3>
-<p>Next, we have to set up source coordinate file for each of molecule. We add tag <code class="code xml docutils literal"><span class="name tag"><span class="pre">&lt;source_file&gt;</span></span></code> and <code class="code xml docutils literal"><span class="name tag"><span class="pre">&lt;source_topology&gt;</span></span></code>
+<p>Next, we have to set up source coordinate file for each of molecule. We add tag <code class="code xml docutils literal notranslate"><span class="name tag"><span class="pre">&lt;source_file&gt;</span></span></code> and <code class="code xml docutils literal notranslate"><span class="name tag"><span class="pre">&lt;source_topology&gt;</span></span></code>
 which defines topology of atomistic fragment.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;cg_molecule&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;cg_molecule&gt;</span>
   ...
   <span class="nt">&lt;source_coordinate&gt;&lt;file&gt;</span>dodecane_single.gro<span class="nt">&lt;/file&gt;&lt;/file&gt;&lt;/source_coordinate&gt;</span>
   <span class="nt">&lt;source_topology&gt;&lt;file&gt;</span>topol.top<span class="nt">&lt;/file&gt;&lt;/source_topology&gt;</span>
@@ -311,13 +311,13 @@ which defines topology of atomistic fragment.</p>
 <span class="nt">&lt;/cg_molecule&gt;</span>
 </pre></div>
 </div>
-<p>There could be multiple <code class="code xml docutils literal"><span class="name tag"><span class="pre">&lt;cg_molecule&gt;</span></span></code> sections that will describe different types of atomistic molecule.</p>
+<p>There could be multiple <code class="code xml docutils literal notranslate"><span class="name tag"><span class="pre">&lt;cg_molecule&gt;</span></span></code> sections that will describe different types of atomistic molecule.</p>
 </div>
 <div class="section" id="cg-configuration">
 <h3><cite>&lt;cg_configuration&gt;</cite><a class="headerlink" href="#cg-configuration" title="Permalink to this headline">¶</a></h3>
 <p>After the list of CG molecules, we have to define
 input format and a name of file of CG coordinate file that is reverse mapped.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;cg_molecule&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;cg_molecule&gt;</span>
 ...
 <span class="nt">&lt;/cg_molecule&gt;</span>
 
@@ -332,7 +332,7 @@ input format and a name of file of CG coordinate file that is reverse mapped.</p
 <div class="section" id="hybrid-configuration">
 <h3><cite>&lt;hybrid_configuration&gt;</cite><a class="headerlink" href="#hybrid-configuration" title="Permalink to this headline">¶</a></h3>
 <p>This section describes output hybrid coordinate file. Currently we support only GROMACS output file.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;hybrid_configuration&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;hybrid_configuration&gt;</span>
   <span class="nt">&lt;file&gt;</span>hyb_conf.gro<span class="nt">&lt;/file&gt;</span>
 <span class="nt">&lt;/hybrid_configuration&gt;</span>
 </pre></div>
@@ -341,8 +341,8 @@ input format and a name of file of CG coordinate file that is reverse mapped.</p
 </div>
 <div class="section" id="hybrid-topology">
 <h3><cite>&lt;hybrid_topology&gt;</cite><a class="headerlink" href="#hybrid-topology" title="Permalink to this headline">¶</a></h3>
-<p>The options for output hybrid topology file are defined in tag <code class="code xml docutils literal"><span class="name tag"><span class="pre">&lt;hybrid_topology&gt;</span></span></code>. Very simple example is shown below.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;hybrid_topology&gt;</span>
+<p>The options for output hybrid topology file are defined in tag <code class="code xml docutils literal notranslate"><span class="name tag"><span class="pre">&lt;hybrid_topology&gt;</span></span></code>. Very simple example is shown below.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;hybrid_topology&gt;</span>
   <span class="nt">&lt;file&gt;</span>hyb_topol.top<span class="nt">&lt;/file&gt;</span>
   <span class="nt">&lt;include&gt;</span>
     #include &quot;/usr/share/gromacs/top/oplsaa.ff/forcefield.itp&quot;
@@ -355,18 +355,18 @@ input format and a name of file of CG coordinate file that is reverse mapped.</p
 <span class="nt">&lt;/hybrid_topology&gt;</span>
 </pre></div>
 </div>
-<p>Here we define that output file is <cite>hyb_topol.top</cite>. We define include section in <code class="code xml docutils literal"><span class="name tag"><span class="pre">&lt;include&gt;&lt;/include&gt;</span></span></code>. <code class="code xml docutils literal"><span class="name tag"><span class="pre">&lt;molecule_type&gt;</span></span></code> tag defines the name of molecule in <cite>&lt;name&gt;</cite> tag and the exclusion rule. In this case, every particle that is separated by 1, 2, 3 bonds will be excluded from non-bonded interactions. This follows the <a class="reference external" href="http://www.gromacs.org/">GROMACS</a> <a class="footnote-reference" href="#id4" id="id5">[2]</a> rules (see <a class="reference external" href="http://www.gromacs.org/Documentation/Manual">GROMACS manual</a> <a class="footnote-reference" href="#id6" id="id7">[3]</a> for further information).</p>
+<p>Here we define that output file is <cite>hyb_topol.top</cite>. We define include section in <code class="code xml docutils literal notranslate"><span class="name tag"><span class="pre">&lt;include&gt;&lt;/include&gt;</span></span></code>. <code class="code xml docutils literal notranslate"><span class="name tag"><span class="pre">&lt;molecule_type&gt;</span></span></code> tag defines the name of molecule in <cite>&lt;name&gt;</cite> tag and the exclusion rule. In this case, every particle that is separated by 1, 2, 3 bonds will be excluded from non-bonded interactions. This follows the <a class="reference external" href="http://www.gromacs.org/">GROMACS</a> <a class="footnote-reference" href="#id4" id="id5">[2]</a> rules (see <a class="reference external" href="http://www.gromacs.org/Documentation/Manual">GROMACS manual</a> <a class="footnote-reference" href="#id6" id="id7">[3]</a> for further information).</p>
 </div>
 </div>
 <div class="section" id="network-backmapping">
 <h2>Network backmapping<a class="headerlink" href="#network-backmapping" title="Permalink to this headline">¶</a></h2>
 <p>This example is based on backampping of epoxy-like network, built with two components:
 bisphenol A diglycidyl ether and isophrone diamine.
-Full settings can be found in <a class="reference download internal" href="_downloads/settings_rim135.xml" download=""><code class="xref download docutils literal"><span class="pre">settings_network.xml</span></code></a>.
+Full settings can be found in <a class="reference download internal" href="_downloads/settings_rim135.xml" download=""><code class="xref download docutils literal notranslate"><span class="pre">settings_network.xml</span></code></a>.
 Here we only denote important sections.</p>
 <div class="section" id="source-coordinate-and-source-topology">
 <h3><cite>&lt;source_coordinate&gt;</cite> and <cite>&lt;source_topology&gt;</cite><a class="headerlink" href="#source-coordinate-and-source-topology" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;source_coordinate&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;source_coordinate&gt;</span>
     <span class="nt">&lt;file</span> <span class="na">molecule_degree=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>epon-828.gro<span class="nt">&lt;/file&gt;</span>
     <span class="nt">&lt;file</span> <span class="na">molecule_degree=</span><span class="s">&quot;1&quot;</span> <span class="na">when=</span><span class="s">&quot;A1&quot;</span><span class="nt">&gt;</span>epon-828_deg1_A1.gro<span class="nt">&lt;/file&gt;</span>
     <span class="nt">&lt;file</span> <span class="na">molecule_degree=</span><span class="s">&quot;1&quot;</span> <span class="na">when=</span><span class="s">&quot;A2&quot;</span><span class="nt">&gt;</span>epon-828_deg1_A2.gro<span class="nt">&lt;/file&gt;</span>
@@ -384,7 +384,7 @@ The same structure is in the case of <cite>source_topology</cite>.</p>
 </div>
 <div class="section" id="cg-bead">
 <h3><cite>&lt;cg_bead&gt;</cite><a class="headerlink" href="#cg-bead" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;cg_bead&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;cg_bead&gt;</span>
     <span class="nt">&lt;name&gt;</span>A1<span class="nt">&lt;/name&gt;</span>
     <span class="nt">&lt;type&gt;</span>A<span class="nt">&lt;/type&gt;</span>
     <span class="nt">&lt;beads</span> <span class="na">degree=</span><span class="s">&quot;1&quot;</span> <span class="na">molecule_degree=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>
@@ -405,9 +405,9 @@ The concept of active sites is illustrated below:</p>
 <img alt="_images/ipd_epon_scheme.png" src="_images/ipd_epon_scheme.png" />
 <div class="section" id="charge-map">
 <h4><cite>&lt;charge_map&gt;</cite><a class="headerlink" href="#charge-map" title="Permalink to this headline">¶</a></h4>
-<p>The partial charges for the atoms can be defined in the input topology file or at the level of <code class="code xml docutils literal"><span class="name tag"><span class="pre">&lt;beads&gt;</span></span></code> tag by
-including <code class="code xml docutils literal"><span class="name tag"><span class="pre">&lt;charge_map&gt;&lt;/charge_map&gt;</span></span></code> tag.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;beads</span> <span class="na">degree=</span><span class="s">&quot;1&quot;</span> <span class="na">molecule_degree=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>
+<p>The partial charges for the atoms can be defined in the input topology file or at the level of <code class="code xml docutils literal notranslate"><span class="name tag"><span class="pre">&lt;beads&gt;</span></span></code> tag by
+including <code class="code xml docutils literal notranslate"><span class="name tag"><span class="pre">&lt;charge_map&gt;&lt;/charge_map&gt;</span></span></code> tag.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;beads</span> <span class="na">degree=</span><span class="s">&quot;1&quot;</span> <span class="na">molecule_degree=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>
     1:EPO:C1 1:EPO:O1 1:EPO:C2 1:EPO:H1 1:EPO:H2 1:EPO:H3 1:EPO:C3 1:EPO:O2 1:EPO:H23 1:EPO:H24
     <span class="nt">&lt;charge_map&gt;</span>
     0.0 0.0 * * * * * * * *
@@ -418,8 +418,8 @@ including <code class="code xml docutils literal"><span class="name tag"><span c
 <p>The number of elements in the charge map has to correspond number of atoms in the fragment.
 We can define explicitly the particla charge for atom or we can declare that the charge for this atom
 will be taken from the topology by using star character <strong>*</strong>.</p>
-<p>The charges per fragment can be equilibrated by definigin the attribute <code class="code xml docutils literal"><span class="pre">equilibrate_charges=&quot;1&quot;</span></code> in <code class="code xml docutils literal"><span class="name tag"><span class="pre">&lt;cg_molecule&gt;</span></span></code> tag:</p>
-<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;cg_molecule</span> <span class="na">equilibrate_charges=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
+<p>The charges per fragment can be equilibrated by definigin the attribute <code class="code xml docutils literal notranslate"><span class="pre">equilibrate_charges=&quot;1&quot;</span></code> in <code class="code xml docutils literal notranslate"><span class="name tag"><span class="pre">&lt;cg_molecule&gt;</span></span></code> tag:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;cg_molecule</span> <span class="na">equilibrate_charges=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
   ...
 </pre></div>
 </div>
